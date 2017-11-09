@@ -11,7 +11,7 @@ app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-var token = "EAAdZAZBb0GkLsBAMJUny0cOZBMN6ZBLryZAWWIbQcACz708Gv5fY1Di8qHWDkF6F3mitjMaEJBkgJK2XZCZCTGXlpHYWlNW8ZCO6MVsCZBw0P4E342Eqrr2E5zehVoBvPwLicZCGF0YjPOVjKzUvjRn3xleK3ZAvfZAX21K7vuLZCXKAl6gZDZD";
+var token = "EAAdZAZBb0GkLsBANuWmUVW25u746jaa6dZBrfSAGjtpIZAkHQujNzjV8hqNc2LRaAYJ6kE58qRovwbvEO55ohlkuqmgPTKQfQRN8A5i6qork5zjQEL3SZB8gXnnKJ9jAgRD2DtYaDDjwDRGXWZBEBHAaxogK2BX4zCobSjkGLTmQZDZD";
 
 //Routes
 app.get('/', function (req, res) {
