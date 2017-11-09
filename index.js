@@ -37,7 +37,6 @@ app.post('/webhook/', function (req, res) {
         if (event.message && event.message.text) {
             let text = event.message.text;
             decideMessage(sender, text);
-            // sendText(sender, "Text echo: " + text.substring(0, 100));
         }
     }
     res.sendStatus(200);
@@ -46,10 +45,13 @@ app.post('/webhook/', function (req, res) {
 function decideMessage(sender, text1) {
     let text = text1.toLowerCase();
     if (text.includes('download')) {
+        console.log("Download button sent");
         sendButtonMessage(sender);
     } else if (text.includes('problem') || text.includes('bad')) {
+        console.log("bad sent");
         sendText(sender,"Hi i am a bot, We are sorry for your bad expirience. A member of our team will respond soon.");
     } else {
+        console.log("Default case sent");
         sendText(sender,"Hi i am a bot, A member from our team will get back to you shortly");
     }
 }
@@ -92,9 +94,9 @@ function sendRequest(sender, messageData) {
         }
     }, function (error, response, body) {
         if (error) {
-            console.log("sending error");
+            console.log("sending error: "+ error);
         } else if (response.body.error) {
-            console.log("response body error");
+            console.log("response body error: "+response.body.error);
         }
     });
 }
