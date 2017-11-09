@@ -94,9 +94,10 @@ function sendRequest(sender, messageData) {
         }
     }, function (error, response, body) {
         if (error) {
-            console.log("sending error: "+ error);
+            console.log("sending error: "+ JSON.stringify(error));
         } else if (response.body.error) {
-            console.log("response body error: "+response.body.error);
+            console.log("response body error: "+JSON.stringify(response.body.error));
+            console.log("body: "+ JSON.stringify(body));
         }
     });
 }
