@@ -3,6 +3,7 @@
 var express= require("express");
 var bodyParser= require("body-parser");
 var request= require("request");
+var secret= require("./secret.json");
 
 var app= express();
 
@@ -11,7 +12,8 @@ app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-var token = "EAAdZAZBb0GkLsBANuWmUVW25u746jaa6dZBrfSAGjtpIZAkHQujNzjV8hqNc2LRaAYJ6kE58qRovwbvEO55ohlkuqmgPTKQfQRN8A5i6qork5zjQEL3SZB8gXnnKJ9jAgRD2DtYaDDjwDRGXWZBEBHAaxogK2BX4zCobSjkGLTmQZDZD";
+var token = secret.app_token;
+var password= secret.app_secret;
 
 //Routes
 app.get('/', function (req, res) {
@@ -20,7 +22,7 @@ app.get('/', function (req, res) {
 
 //Facebook
 app.get('/webhook/', function(req, res) {
-    if (req.query['hub.verify_token'] === "password") {
+    if (req.query['hub.verify_token'] === password) {
         return res.send(req.query['hub.challenge']);
     }else{
         res.send("Wrong token");
